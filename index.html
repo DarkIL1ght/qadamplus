@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QadamPlus — шаг к здоровому будущему</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#1a1a1a;background:#fff}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;border-bottom:1px solid #e5e5e5;position:sticky;top:0;background:#fff;z-index:100}
+  .nav-logo{font-size:20px;font-weight:600;color:#1D9E75}
+  .nav-logo span{color:#1a1a1a}
+  .nav-links{display:flex;gap:24px;list-style:none}
+  .nav-links a{font-size:14px;color:#666;text-decoration:none}
+  .nav-links a:hover{color:#1D9E75}
+
+  .hero{padding:5rem 2rem 4rem;text-align:center;border-bottom:1px solid #e5e5e5;background:#f9fafb}
+  .logo-badge{display:inline-flex;align-items:center;gap:8px;background:#EAF3DE;color:#3B6D11;font-size:13px;font-weight:500;padding:6px 14px;border-radius:20px;margin-bottom:1.5rem}
+  .logo-dot{width:8px;height:8px;border-radius:50%;background:#639922}
+  h1{font-size:42px;font-weight:700;line-height:1.2;margin-bottom:1rem}
+  h1 span{color:#1D9E75}
+  .hero-sub{font-size:17px;color:#555;max-width:500px;margin:0 auto 2.5rem;line-height:1.7}
+  .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn-primary{background:#1D9E75;color:#fff;border:none;padding:13px 30px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;text-decoration:none}
+  .btn-primary:hover{background:#0F6E56}
+  .btn-secondary{background:#fff;color:#1a1a1a;border:1px solid #ddd;padding:13px 30px;border-radius:10px;font-size:15px;cursor:pointer;text-decoration:none}
+
+  .section{padding:3.5rem 2rem;border-bottom:1px solid #e5e5e5;max-width:760px;margin:0 auto}
+  .section-label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#1D9E75;margin-bottom:0.75rem}
+  .section-title{font-size:26px;font-weight:700;margin-bottom:0.6rem}
+  .section-sub{font-size:15px;color:#555;line-height:1.7;margin-bottom:2rem}
+
+  .problems-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+  .prob-card{background:#f9fafb;border-radius:12px;padding:1.1rem 1.2rem;border:1px solid #e5e5e5}
+  .prob-icon{width:36px;height:36px;border-radius:8px;background:#FAECE7;display:flex;align-items:center;justify-content:center;margin-bottom:10px;font-size:18px}
+  .prob-title{font-size:14px;font-weight:600;margin-bottom:4px}
+  .prob-desc{font-size:13px;color:#666;line-height:1.5}
+
+  .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+  .feat-card{background:#fff;border:1px solid #e5e5e5;border-radius:14px;padding:1.3rem}
+  .feat-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:12px}
+  .feat-green{background:#EAF3DE}
+  .feat-blue{background:#E6F1FB}
+  .feat-purple{background:#EEEDFE}
+  .feat-amber{background:#FAEEDA}
+  .feat-title{font-size:15px;font-weight:600;margin-bottom:6px}
+  .feat-desc{font-size:13px;color:#666;line-height:1.5}
+
+  .tasks-list{display:flex;flex-direction:column;gap:10px}
+  .task-row{display:flex;align-items:center;gap:14px;background:#f9fafb;border-radius:10px;padding:0.9rem 1.1rem;border:1px solid #e5e5e5}
+  .task-check{width:30px;height:30px;border-radius:50%;background:#EAF3DE;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px}
+  .task-name{flex:1;font-size:14px;font-weight:500}
+  .coin-badge{background:#FAEEDA;color:#854F0B;font-size:12px;font-weight:600;padding:4px 12px;border-radius:12px}
+
+  .coin-section{background:#f9fafb;border-radius:14px;padding:1.5rem;border:1px solid #e5e5e5;margin-top:1.5rem}
+  .coin-title{font-size:16px;font-weight:600;margin-bottom:1rem}
+  .coin-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+  .coin-opt{background:#fff;border-radius:10px;padding:1rem;border:1px solid #e5e5e5;text-align:center}
+  .coin-opt-icon{font-size:22px;margin-bottom:6px}
+  .coin-opt-text{font-size:13px;color:#555;line-height:1.4}
+
+  .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:2rem}
+  .stat-card{background:#f9fafb;border-radius:10px;padding:1.1rem;text-align:center;border:1px solid #e5e5e5}
+  .stat-num{font-size:30px;font-weight:700;color:#1D9E75}
+  .stat-label{font-size:12px;color:#666;margin-top:4px}
+
+  .budget-wrap{background:#f9fafb;border-radius:14px;border:1px solid #e5e5e5;overflow:hidden}
+  .budget-table{width:100%;border-collapse:collapse;font-size:14px}
+  .budget-table td{padding:12px 16px;border-bottom:1px solid #e5e5e5;color:#333}
+  .budget-table td:last-child{text-align:right;font-weight:600}
+  .budget-table tr:last-child td{border-bottom:none;color:#1D9E75;font-size:15px}
+
+  .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+  .team-card{background:#f9fafb;border-radius:14px;padding:1.2rem;text-align:center;border:1px solid #e5e5e5}
+  .avatar{width:52px;height:52px;border-radius:50%;background:#E1F5EE;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:16px;color:#0F6E56;font-weight:700}
+  .team-name{font-size:14px;font-weight:600}
+  .team-role{font-size:12px;color:#666;margin-top:3px}
+
+  footer{padding:2.5rem 2rem;text-align:center;background:#f9fafb;border-top:1px solid #e5e5e5}
+  .footer-logo{font-size:22px;font-weight:700;color:#1D9E75;margin-bottom:6px}
+  footer p{font-size:13px;color:#888}
+
+  @media(max-width:600px){
+    h1{font-size:28px}
+    .nav-links{display:none}
+    .stats-grid{grid-template-columns:1fr 1fr}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">Qadam<span>Plus</span></div>
+  <ul class="nav-links">
+    <li><a href="#problem">О проекте</a></li>
+    <li><a href="#features">Функции</a></li>
+    <li><a href="#coins">Монеты</a></li>
+    <li><a href="#team">Команда</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="logo-badge"><div class="logo-dot"></div>Социальный проект 2025</div>
+  <h1>Шаг к <span>здоровому</span><br>будущему</h1>
+  <p class="hero-sub">QadamPlus — цифровая платформа, которая превращает заботу о здоровье в систему полезных мини-заданий с реальными наградами.</p>
+  <div class="cta-row">
+    <a class="btn-primary" href="#features">Узнать больше</a>
+    <a class="btn-secondary" href="#budget">Бюджет проекта</a>
+  </div>
+</div>
+
+<div class="section" id="problem">
+  <div class="section-label">Проблема</div>
+  <div class="section-title">Почему это важно</div>
+  <div class="section-sub">Более 70% подростков проводят в телефоне 4–6 часов в день. Это приводит к ухудшению зрения, осанки и концентрации внимания.</div>
+  <div class="problems-grid">
+    <div class="prob-card">
+      <div class="prob-icon">👁</div>
+      <div class="prob-title">Ухудшение зрения</div>
+      <div class="prob-desc">Постоянный экран без перерывов</div>
+    </div>
+    <div class="prob-card">
+      <div class="prob-icon">😰</div>
+      <div class="prob-title">Стресс и тревога</div>
+      <div class="prob-desc">Нет инструментов для снятия напряжения</div>
+    </div>
+    <div class="prob-card">
+      <div class="prob-icon">🏃</div>
+      <div class="prob-title">Низкая активность</div>
+      <div class="prob-desc">Снижение физической нагрузки</div>
+    </div>
+    <div class="prob-card">
+      <div class="prob-icon">💤</div>
+      <div class="prob-title">Нарушение сна</div>
+      <div class="prob-desc">Телефон перед сном мешает отдыху</div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="features">
+  <div class="section-label">Решение</div>
+  <div class="section-title">Функции QadamPlus</div>
+  <div class="section-sub">Четыре ключевых модуля для здоровья тела и разума.</div>
+  <div class="features-grid">
+    <div class="feat-card">
+      <div class="feat-icon feat-green">👁</div>
+      <div class="feat-title">Здоровье зрения</div>
+      <div class="feat-desc">Упражнения для глаз, режим 20-20-20 и успокаивающие цветовые режимы</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon feat-blue">🎵</div>
+      <div class="feat-title">Аудиотерапия</div>
+      <div class="feat-desc">Музыка определённых частот, звуки природы и антистресс-аудио</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon feat-purple">🧘</div>
+      <div class="feat-title">Медитация</div>
+      <div class="feat-desc">Короткие 3–5 минутные сессии, вечерний режим и дыхательные практики</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon feat-amber">🎯</div>
+      <div class="feat-title">Мини-задания</div>
+      <div class="feat-desc">Ежедневные задачи с наградой в виде Шагикойнов</div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="coins">
+  <div class="section-label">Мотивация</div>
+  <div class="section-title">Система Шагикойнов</div>
+  <div class="section-sub">Выполняй задания — получай монеты — обменивай на реальные награды.</div>
+  <div class="tasks-list">
+    <div class="task-row">
+      <div class="task-check">✓</div>
+      <div class="task-name">Пройти 5 000 шагов</div>
+      <div class="coin-badge">+50 монет</div>
+    </div>
+    <div class="task-row">
+      <div class="task-check">✓</div>
+      <div class="task-name">10 минут без телефона</div>
+      <div class="coin-badge">+30 монет</div>
+    </div>
+    <div class="task-row">
+      <div class="task-check">✓</div>
+      <div class="task-name">5 минут дыхательной практики</div>
+      <div class="coin-badge">+25 монет</div>
+    </div>
+    <div class="task-row">
+      <div class="task-check">✓</div>
+      <div class="task-name">Упражнения для глаз</div>
+      <div class="coin-badge">+20 монет</div>
+    </div>
+    <div class="task-row">
+      <div class="task-check">✓</div>
+      <div class="task-name">1 день без сладкого</div>
+      <div class="coin-badge">+40 монет</div>
+    </div>
+  </div>
+  <div class="coin-section">
+    <div class="coin-title">Куда тратить Шагикойны?</div>
+    <div class="coin-options">
+      <div class="coin-opt"><div class="coin-opt-icon">💊</div><div class="coin-opt-text">Скидка в аптеке</div></div>
+      <div class="coin-opt"><div class="coin-opt-icon">🏋️</div><div class="coin-opt-text">Бонус в спортмагазине</div></div>
+      <div class="coin-opt"><div class="coin-opt-icon">🎁</div><div class="coin-opt-text">Школьные призы</div></div>
+      <div class="coin-opt"><div class="coin-opt-icon">🔓</div><div class="coin-opt-text">Новые функции приложения</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Результаты</div>
+  <div class="section-title">Ожидаемый эффект</div>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-num">−20%</div>
+      <div class="stat-label">Время за экраном</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">+15%</div>
+      <div class="stat-label">Физическая активность</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">3 уровня</div>
+      <div class="stat-label">Масштабирования</div>
+    </div>
+  </div>
+  <p class="section-sub" style="margin-bottom:0">Проект масштабируется от одной школы до уровня всей страны. QadamPlus может стать национальной платформой здоровых привычек.</p>
+</div>
+
+<div class="section" id="budget">
+  <div class="section-label">Бюджет</div>
+  <div class="section-title">Финансовый план</div>
+  <div class="section-sub">Примерная стоимость реализации MVP.</div>
+  <div class="budget-wrap">
+    <table class="budget-table">
+      <tr><td>Разработка прототипа</td><td>500 000 тг</td></tr>
+      <tr><td>Дизайн интерфейса</td><td>200 000 тг</td></tr>
+      <tr><td>Сервер и поддержка</td><td>150 000 тг</td></tr>
+      <tr><td>Реклама и продвижение</td><td>150 000 тг</td></tr>
+      <tr><td>Итого</td><td>~1 000 000 тг</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="team" style="border-bottom:none">
+  <div class="section-label">Команда</div>
+  <div class="section-title">Участники проекта</div>
+  <div class="section-sub">Ученики, которые создают здоровое будущее.</div>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="avatar">У1</div>
+      <div class="team-name">Участник 1</div>
+      <div class="team-role">Идея и концепция</div>
+    </div>
+    <div class="team-card">
+      <div class="avatar">У2</div>
+      <div class="team-name">Участник 2</div>
+      <div class="team-role">Дизайн</div>
+    </div>
+    <div class="team-card">
+      <div class="avatar">У3</div>
+      <div class="team-name">Участник 3</div>
+      <div class="team-role">Разработка</div>
+    </div>
+    <div class="team-card">
+      <div class="avatar">У4</div>
+      <div class="team-name">Участник 4</div>
+      <div class="team-role">Исследование</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">QadamPlus</div>
+  <p>Шаг к здоровому будущему · Социальный проект 2025</p>
+</footer>
+
+</body>
+</html>
