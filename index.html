@@ -5,241 +5,307 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>QadamPlus — шаг к здоровому будущему</title>
 <style>
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#1a1a1a;background:#fff}
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;border-bottom:1px solid #e5e5e5;position:sticky;top:0;background:#fff;z-index:100}
-  .nav-logo{font-size:20px;font-weight:600;color:#1D9E75}
-  .nav-logo span{color:#1a1a1a}
-  .nav-links{display:flex;gap:24px;list-style:none}
-  .nav-links a{font-size:14px;color:#666;text-decoration:none}
-  .nav-links a:hover{color:#1D9E75}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#1a1a1a;background:#fff}
 
-  .hero{padding:5rem 2rem 4rem;text-align:center;border-bottom:1px solid #e5e5e5;background:#f9fafb}
-  .logo-badge{display:inline-flex;align-items:center;gap:8px;background:#EAF3DE;color:#3B6D11;font-size:13px;font-weight:500;padding:6px 14px;border-radius:20px;margin-bottom:1.5rem}
-  .logo-dot{width:8px;height:8px;border-radius:50%;background:#639922}
-  h1{font-size:42px;font-weight:700;line-height:1.2;margin-bottom:1rem}
-  h1 span{color:#1D9E75}
-  .hero-sub{font-size:17px;color:#555;max-width:500px;margin:0 auto 2.5rem;line-height:1.7}
-  .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-  .btn-primary{background:#1D9E75;color:#fff;border:none;padding:13px 30px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;text-decoration:none}
-  .btn-primary:hover{background:#0F6E56}
-  .btn-secondary{background:#fff;color:#1a1a1a;border:1px solid #ddd;padding:13px 30px;border-radius:10px;font-size:15px;cursor:pointer;text-decoration:none}
+nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 2.5rem;border-bottom:1px solid #e8e8e8;position:sticky;top:0;background:rgba(255,255,255,0.97);backdrop-filter:blur(8px);z-index:100}
+.nav-logo{font-size:20px;font-weight:700;color:#1D9E75}
+.nav-logo span{color:#1a1a1a}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:14px;color:#555;text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:#1D9E75}
 
-  .section{padding:3.5rem 2rem;border-bottom:1px solid #e5e5e5;max-width:760px;margin:0 auto}
-  .section-label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#1D9E75;margin-bottom:0.75rem}
-  .section-title{font-size:26px;font-weight:700;margin-bottom:0.6rem}
-  .section-sub{font-size:15px;color:#555;line-height:1.7;margin-bottom:2rem}
+.hero{padding:6rem 2rem 5rem;text-align:center;background:linear-gradient(160deg,#f0fdf7 0%,#fff 60%)}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:#EAF3DE;color:#3B6D11;font-size:13px;font-weight:600;padding:6px 16px;border-radius:20px;margin-bottom:2rem}
+.hero-dot{width:7px;height:7px;border-radius:50%;background:#1D9E75}
+h1{font-size:48px;font-weight:800;line-height:1.15;margin-bottom:1.2rem;letter-spacing:-0.02em}
+h1 span{color:#1D9E75}
+.hero-sub{font-size:18px;color:#555;max-width:540px;margin:0 auto 2.5rem;line-height:1.7}
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-green{background:#1D9E75;color:#fff;border:none;padding:14px 32px;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;transition:background .2s}
+.btn-green:hover{background:#0F6E56}
+.btn-outline{background:#fff;color:#1a1a1a;border:1.5px solid #ddd;padding:14px 32px;border-radius:12px;font-size:15px;font-weight:500;cursor:pointer;text-decoration:none;transition:border-color .2s}
+.btn-outline:hover{border-color:#1D9E75;color:#1D9E75}
 
-  .problems-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
-  .prob-card{background:#f9fafb;border-radius:12px;padding:1.1rem 1.2rem;border:1px solid #e5e5e5}
-  .prob-icon{width:36px;height:36px;border-radius:8px;background:#FAECE7;display:flex;align-items:center;justify-content:center;margin-bottom:10px;font-size:18px}
-  .prob-title{font-size:14px;font-weight:600;margin-bottom:4px}
-  .prob-desc{font-size:13px;color:#666;line-height:1.5}
+.hero-stat-row{display:flex;justify-content:center;gap:48px;margin-top:4rem;padding-top:3rem;border-top:1px solid #e8e8e8;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat-num{font-size:32px;font-weight:800;color:#1D9E75}
+.hero-stat-label{font-size:13px;color:#888;margin-top:4px}
 
-  .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
-  .feat-card{background:#fff;border:1px solid #e5e5e5;border-radius:14px;padding:1.3rem}
-  .feat-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:12px}
-  .feat-green{background:#EAF3DE}
-  .feat-blue{background:#E6F1FB}
-  .feat-purple{background:#EEEDFE}
-  .feat-amber{background:#FAEEDA}
-  .feat-title{font-size:15px;font-weight:600;margin-bottom:6px}
-  .feat-desc{font-size:13px;color:#666;line-height:1.5}
+.section{padding:4rem 2rem;border-bottom:1px solid #e8e8e8;max-width:820px;margin:0 auto}
+.tag{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#1D9E75;background:#EAF3DE;padding:4px 12px;border-radius:20px;margin-bottom:1rem}
+h2{font-size:30px;font-weight:800;margin-bottom:0.6rem;letter-spacing:-0.01em}
+.lead{font-size:16px;color:#555;line-height:1.7;margin-bottom:2.5rem}
 
-  .tasks-list{display:flex;flex-direction:column;gap:10px}
-  .task-row{display:flex;align-items:center;gap:14px;background:#f9fafb;border-radius:10px;padding:0.9rem 1.1rem;border:1px solid #e5e5e5}
-  .task-check{width:30px;height:30px;border-radius:50%;background:#EAF3DE;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px}
-  .task-name{flex:1;font-size:14px;font-weight:500}
-  .coin-badge{background:#FAEEDA;color:#854F0B;font-size:12px;font-weight:600;padding:4px 12px;border-radius:12px}
+/* MISSION */
+.mission-box{background:#f0fdf7;border-radius:16px;padding:2rem 2.5rem;border-left:4px solid #1D9E75}
+.mission-box p{font-size:20px;font-weight:600;color:#0F6E56;line-height:1.5}
 
-  .coin-section{background:#f9fafb;border-radius:14px;padding:1.5rem;border:1px solid #e5e5e5;margin-top:1.5rem}
-  .coin-title{font-size:16px;font-weight:600;margin-bottom:1rem}
-  .coin-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
-  .coin-opt{background:#fff;border-radius:10px;padding:1rem;border:1px solid #e5e5e5;text-align:center}
-  .coin-opt-icon{font-size:22px;margin-bottom:6px}
-  .coin-opt-text{font-size:13px;color:#555;line-height:1.4}
+/* REWARDS */
+.rewards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.reward-card{background:#fff;border:1px solid #e8e8e8;border-radius:16px;padding:1.5rem;transition:box-shadow .2s}
+.reward-card:hover{box-shadow:0 4px 20px rgba(0,0,0,0.07)}
+.reward-num{width:32px;height:32px;border-radius:50%;background:#EAF3DE;color:#0F6E56;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+.reward-icon{font-size:28px;margin-bottom:12px}
+.reward-title{font-size:16px;font-weight:700;margin-bottom:6px}
+.reward-desc{font-size:13px;color:#666;line-height:1.6;margin-bottom:12px}
+.reward-partners{display:flex;flex-wrap:wrap;gap:6px}
+.partner-tag{background:#f5f5f5;color:#444;font-size:11px;font-weight:600;padding:3px 10px;border-radius:8px}
 
-  .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:2rem}
-  .stat-card{background:#f9fafb;border-radius:10px;padding:1.1rem;text-align:center;border:1px solid #e5e5e5}
-  .stat-num{font-size:30px;font-weight:700;color:#1D9E75}
-  .stat-label{font-size:12px;color:#666;margin-top:4px}
+/* CHECKUP */
+.checkup-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:1rem}
+.checkup-card{background:#f9fafb;border-radius:12px;padding:1.1rem;border:1px solid #e8e8e8}
+.checkup-name{font-size:14px;font-weight:700;margin-bottom:6px;color:#1D9E75}
+.checkup-items{font-size:13px;color:#555;line-height:1.6}
+.saving-badge{display:inline-block;background:#FAEEDA;color:#854F0B;font-size:12px;font-weight:700;padding:4px 12px;border-radius:8px;margin-top:1rem}
 
-  .budget-wrap{background:#f9fafb;border-radius:14px;border:1px solid #e5e5e5;overflow:hidden}
-  .budget-table{width:100%;border-collapse:collapse;font-size:14px}
-  .budget-table td{padding:12px 16px;border-bottom:1px solid #e5e5e5;color:#333}
-  .budget-table td:last-child{text-align:right;font-weight:600}
-  .budget-table tr:last-child td{border-bottom:none;color:#1D9E75;font-size:15px}
+/* HOW IT WORKS */
+.steps{display:flex;flex-direction:column;gap:0}
+.step{display:flex;gap:20px;align-items:flex-start;padding:1.5rem 0;border-bottom:1px solid #f0f0f0}
+.step:last-child{border-bottom:none}
+.step-num{width:40px;height:40px;border-radius:12px;background:#1D9E75;color:#fff;font-size:16px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-body h3{font-size:16px;font-weight:700;margin-bottom:4px}
+.step-body p{font-size:14px;color:#666;line-height:1.6}
+.step-example{display:inline-block;background:#EAF3DE;color:#3B6D11;font-size:12px;font-weight:600;padding:3px 10px;border-radius:8px;margin-top:6px}
 
-  .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
-  .team-card{background:#f9fafb;border-radius:14px;padding:1.2rem;text-align:center;border:1px solid #e5e5e5}
-  .avatar{width:52px;height:52px;border-radius:50%;background:#E1F5EE;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:16px;color:#0F6E56;font-weight:700}
-  .team-name{font-size:14px;font-weight:600}
-  .team-role{font-size:12px;color:#666;margin-top:3px}
+/* INVESTOR */
+.investor-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.inv-card{background:#f9fafb;border-radius:14px;padding:1.5rem;border:1px solid #e8e8e8;text-align:center}
+.inv-num{font-size:34px;font-weight:800;color:#1D9E75;margin-bottom:6px}
+.inv-label{font-size:13px;color:#666;line-height:1.5}
 
-  footer{padding:2.5rem 2rem;text-align:center;background:#f9fafb;border-top:1px solid #e5e5e5}
-  .footer-logo{font-size:22px;font-weight:700;color:#1D9E75;margin-bottom:6px}
-  footer p{font-size:13px;color:#888}
+/* FEATURES */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.feat-card{background:#fff;border:1px solid #e8e8e8;border-radius:14px;padding:1.3rem}
+.feat-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:12px}
+.bg-green{background:#EAF3DE}
+.bg-blue{background:#E6F1FB}
+.bg-purple{background:#EEEDFE}
+.bg-amber{background:#FAEEDA}
+.feat-title{font-size:15px;font-weight:700;margin-bottom:6px}
+.feat-desc{font-size:13px;color:#666;line-height:1.5}
 
-  @media(max-width:600px){
-    h1{font-size:28px}
-    .nav-links{display:none}
-    .stats-grid{grid-template-columns:1fr 1fr}
-  }
+/* TEAM */
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+.team-card{background:#f9fafb;border-radius:14px;padding:1.3rem;text-align:center;border:1px solid #e8e8e8}
+.avatar{width:52px;height:52px;border-radius:50%;background:#E1F5EE;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:15px;color:#0F6E56;font-weight:800}
+.team-name{font-size:14px;font-weight:700}
+.team-role{font-size:12px;color:#888;margin-top:3px}
+
+/* FOOTER */
+footer{background:#0F6E56;color:#fff;padding:3rem 2rem;text-align:center}
+.footer-logo{font-size:26px;font-weight:800;margin-bottom:8px}
+.footer-logo span{opacity:0.6}
+footer p{font-size:14px;opacity:0.6;margin-top:6px}
+.footer-tagline{font-size:16px;opacity:0.85;margin-bottom:1.5rem}
+
+@media(max-width:640px){
+  h1{font-size:32px}
+  .nav-links{display:none}
+  .hero{padding:4rem 1.2rem 3rem}
+  .hero-stat-row{gap:28px}
+  .section{padding:3rem 1.2rem}
+}
 </style>
 </head>
 <body>
 
-<nav class="nav">
+<nav>
   <div class="nav-logo">Qadam<span>Plus</span></div>
   <ul class="nav-links">
-    <li><a href="#problem">О проекте</a></li>
-    <li><a href="#features">Функции</a></li>
-    <li><a href="#coins">Монеты</a></li>
+    <li><a href="#mission">Миссия</a></li>
+    <li><a href="#rewards">Награды</a></li>
+    <li><a href="#how">Как работает</a></li>
+    <li><a href="#investors">Инвесторам</a></li>
     <li><a href="#team">Команда</a></li>
   </ul>
 </nav>
 
 <div class="hero">
-  <div class="logo-badge"><div class="logo-dot"></div>Социальный проект 2025</div>
-  <h1>Шаг к <span>здоровому</span><br>будущему</h1>
-  <p class="hero-sub">QadamPlus — цифровая платформа, которая превращает заботу о здоровье в систему полезных мини-заданий с реальными наградами.</p>
+  <div class="hero-badge"><div class="hero-dot"></div>Социальный проект · Казахстан 2025</div>
+  <h1>Маленькие шаги —<br><span>большое здоровье</span></h1>
+  <p class="hero-sub">QadamPlus превращает заботу о здоровье в привычку. Делай шаги, выполняй задания и получай реальные скидки на фитнес, анализы и аптеки.</p>
   <div class="cta-row">
-    <a class="btn-primary" href="#features">Узнать больше</a>
-    <a class="btn-secondary" href="#budget">Бюджет проекта</a>
+    <a class="btn-green" href="#rewards">Смотреть награды</a>
+    <a class="btn-outline" href="#investors">Для инвесторов</a>
   </div>
-</div>
-
-<div class="section" id="problem">
-  <div class="section-label">Проблема</div>
-  <div class="section-title">Почему это важно</div>
-  <div class="section-sub">Более 70% подростков проводят в телефоне 4–6 часов в день. Это приводит к ухудшению зрения, осанки и концентрации внимания.</div>
-  <div class="problems-grid">
-    <div class="prob-card">
-      <div class="prob-icon">👁</div>
-      <div class="prob-title">Ухудшение зрения</div>
-      <div class="prob-desc">Постоянный экран без перерывов</div>
+  <div class="hero-stat-row">
+    <div class="hero-stat">
+      <div class="hero-stat-num">300+</div>
+      <div class="hero-stat-label">партнёрских точек</div>
     </div>
-    <div class="prob-card">
-      <div class="prob-icon">😰</div>
-      <div class="prob-title">Стресс и тревога</div>
-      <div class="prob-desc">Нет инструментов для снятия напряжения</div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">40 000 ₸</div>
+      <div class="hero-stat-label">экономия в месяц</div>
     </div>
-    <div class="prob-card">
-      <div class="prob-icon">🏃</div>
-      <div class="prob-title">Низкая активность</div>
-      <div class="prob-desc">Снижение физической нагрузки</div>
-    </div>
-    <div class="prob-card">
-      <div class="prob-icon">💤</div>
-      <div class="prob-title">Нарушение сна</div>
-      <div class="prob-desc">Телефон перед сном мешает отдыху</div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">10 000</div>
+      <div class="hero-stat-label">шагов = скидка завтра</div>
     </div>
   </div>
 </div>
 
-<div class="section" id="features">
-  <div class="section-label">Решение</div>
-  <div class="section-title">Функции QadamPlus</div>
-  <div class="section-sub">Четыре ключевых модуля для здоровья тела и разума.</div>
-  <div class="features-grid">
-    <div class="feat-card">
-      <div class="feat-icon feat-green">👁</div>
-      <div class="feat-title">Здоровье зрения</div>
-      <div class="feat-desc">Упражнения для глаз, режим 20-20-20 и успокаивающие цветовые режимы</div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon feat-blue">🎵</div>
-      <div class="feat-title">Аудиотерапия</div>
-      <div class="feat-desc">Музыка определённых частот, звуки природы и антистресс-аудио</div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon feat-purple">🧘</div>
-      <div class="feat-title">Медитация</div>
-      <div class="feat-desc">Короткие 3–5 минутные сессии, вечерний режим и дыхательные практики</div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon feat-amber">🎯</div>
-      <div class="feat-title">Мини-задания</div>
-      <div class="feat-desc">Ежедневные задачи с наградой в виде Шагикойнов</div>
-    </div>
+<div class="section" id="mission">
+  <div class="tag">Миссия</div>
+  <h2>Зачем мы это делаем</h2>
+  <p class="lead">Здоровый образ жизни часто кажется дорогим и сложным. Мы меняем это.</p>
+  <div class="mission-box">
+    <p>Оздоровить нацию через внедрение культуры «маленьких шагов» — доступно, мотивирующе и с реальной выгодой для каждого.</p>
   </div>
 </div>
 
-<div class="section" id="coins">
-  <div class="section-label">Мотивация</div>
-  <div class="section-title">Система Шагикойнов</div>
-  <div class="section-sub">Выполняй задания — получай монеты — обменивай на реальные награды.</div>
-  <div class="tasks-list">
-    <div class="task-row">
-      <div class="task-check">✓</div>
-      <div class="task-name">Пройти 5 000 шагов</div>
-      <div class="coin-badge">+50 монет</div>
+<div class="section" id="rewards">
+  <div class="tag">Награды</div>
+  <h2>Что ты получаешь за шаги</h2>
+  <p class="lead">Накапливай Шагикойны и обменивай на реальные привилегии у топовых партнёров страны.</p>
+  <div class="rewards-grid">
+
+    <div class="reward-card">
+      <div class="reward-icon">🏋️</div>
+      <div class="reward-title">Месяц бесплатного фитнеса</div>
+      <div class="reward-desc">Никаких обязательств — просто обменяй накопленные койны на 30 дней безлимитного фитнеса.</div>
+      <div class="reward-partners">
+        <span class="partner-tag">Invictus</span>
+        <span class="partner-tag">1Fit</span>
+        <span class="partner-tag">YASport</span>
+        <span class="partner-tag">Balance</span>
+      </div>
     </div>
-    <div class="task-row">
-      <div class="task-check">✓</div>
-      <div class="task-name">10 минут без телефона</div>
-      <div class="coin-badge">+30 монет</div>
+
+    <div class="reward-card">
+      <div class="reward-icon">🧪</div>
+      <div class="reward-title">Скидка 30% на анализы</div>
+      <div class="reward-desc">Экономия до 6 000 ₸ на каждом обследовании. Проверь показатели в лучших лабораториях страны.</div>
+      <div class="reward-partners">
+        <span class="partner-tag">Invivo</span>
+        <span class="partner-tag">Олимп</span>
+        <span class="partner-tag">ЭмирМед</span>
+      </div>
     </div>
-    <div class="task-row">
-      <div class="task-check">✓</div>
-      <div class="task-name">5 минут дыхательной практики</div>
-      <div class="coin-badge">+25 монет</div>
+
+    <div class="reward-card">
+      <div class="reward-icon">😁</div>
+      <div class="reward-title">Чистка зубов AirFlow за полцены</div>
+      <div class="reward-desc">Профессиональный уход, который стоит от 15 000 ₸, — доступен за активный образ жизни.</div>
+      <div class="reward-partners">
+        <span class="partner-tag">Партнёрские клиники</span>
+      </div>
     </div>
-    <div class="task-row">
-      <div class="task-check">✓</div>
-      <div class="task-name">Упражнения для глаз</div>
-      <div class="coin-badge">+20 монет</div>
+
+    <div class="reward-card">
+      <div class="reward-icon">💊</div>
+      <div class="reward-title">Аптечный маркетплейс</div>
+      <div class="reward-desc">Скидки до 50% на витамины, БАДы, дерматокосметику и полезные перекусы.</div>
+      <div class="reward-partners">
+        <span class="partner-tag">Europharma</span>
+        <span class="partner-tag">Биосфера</span>
+        <span class="partner-tag">Рауза-АДЕ</span>
+      </div>
     </div>
-    <div class="task-row">
-      <div class="task-check">✓</div>
-      <div class="task-name">1 день без сладкого</div>
-      <div class="coin-badge">+40 монет</div>
-    </div>
+
   </div>
-  <div class="coin-section">
-    <div class="coin-title">Куда тратить Шагикойны?</div>
-    <div class="coin-options">
-      <div class="coin-opt"><div class="coin-opt-icon">💊</div><div class="coin-opt-text">Скидка в аптеке</div></div>
-      <div class="coin-opt"><div class="coin-opt-icon">🏋️</div><div class="coin-opt-text">Бонус в спортмагазине</div></div>
-      <div class="coin-opt"><div class="coin-opt-icon">🎁</div><div class="coin-opt-text">Школьные призы</div></div>
-      <div class="coin-opt"><div class="coin-opt-icon">🔓</div><div class="coin-opt-text">Новые функции приложения</div></div>
+
+  <div style="margin-top:2.5rem">
+    <div class="tag">Чек-апы со скидкой 30%</div>
+    <div class="checkup-grid">
+      <div class="checkup-card">
+        <div class="checkup-name">Check-up «Энергия»</div>
+        <div class="checkup-items">Витамин D<br>Ферритин</div>
+      </div>
+      <div class="checkup-card">
+        <div class="checkup-name">Check-up «Чистая кожа»</div>
+        <div class="checkup-items">Глюкоза<br>ТТГ</div>
+      </div>
+      <div class="checkup-card">
+        <div class="checkup-name">Check-up «Anti-Stress»</div>
+        <div class="checkup-items">Магний<br>Кортизол</div>
+      </div>
+    </div>
+    <div class="saving-badge">Экономия до 6 000 ₸ на каждом чек-апе</div>
+  </div>
+</div>
+
+<div class="section" id="how">
+  <div class="tag">Как работает</div>
+  <h2>Три простых шага</h2>
+  <p class="lead">Никаких сложностей — просто живи активно и получай выгоду.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h3>Выполняй мини-задания</h3>
+        <p>Пройди 10 000 шагов, сделай упражнения для глаз, 5 минут медитации или день без сладкого — каждое задание приносит Шагикойны.</p>
+        <span class="step-example">10 000 шагов = +100 монет</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h3>Накапливай Шагикойны</h3>
+        <p>Монеты не сгорают. Копи и обменивай на любую из наград — фитнес, анализы, стоматология или аптека.</p>
+        <span class="step-example">Скидка на чекап завтра</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h3>Получай реальную выгоду</h3>
+        <p>300+ партнёрских точек по всему Казахстану. Предъяви QR-код в приложении — и скидка твоя.</p>
+        <span class="step-example">300+ точек по всему Казахстану</span>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="section">
-  <div class="section-label">Результаты</div>
-  <div class="section-title">Ожидаемый эффект</div>
-  <div class="stats-grid">
-    <div class="stat-card">
-      <div class="stat-num">−20%</div>
-      <div class="stat-label">Время за экраном</div>
+  <div class="tag">Приложение</div>
+  <h2>Всё для здоровья в одном месте</h2>
+  <p class="lead">Четыре модуля, которые работают вместе.</p>
+  <div class="features-grid">
+    <div class="feat-card">
+      <div class="feat-icon bg-green">👁</div>
+      <div class="feat-title">Здоровье зрения</div>
+      <div class="feat-desc">Режим 20-20-20, упражнения для глаз и успокаивающие цветовые режимы экрана</div>
     </div>
-    <div class="stat-card">
-      <div class="stat-num">+15%</div>
-      <div class="stat-label">Физическая активность</div>
+    <div class="feat-card">
+      <div class="feat-icon bg-blue">🎵</div>
+      <div class="feat-title">Аудиотерапия</div>
+      <div class="feat-desc">Антистресс-аудио, звуки природы и музыка определённых частот для расслабления</div>
     </div>
-    <div class="stat-card">
-      <div class="stat-num">3 уровня</div>
-      <div class="stat-label">Масштабирования</div>
+    <div class="feat-card">
+      <div class="feat-icon bg-purple">🧘</div>
+      <div class="feat-title">Медитация</div>
+      <div class="feat-desc">Короткие сессии 3–5 минут, вечерний режим перед сном и дыхательные практики</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon bg-amber">🎯</div>
+      <div class="feat-title">Мини-задания</div>
+      <div class="feat-desc">Ежедневные задачи с наградами — каждое выполненное задание приближает к бонусу</div>
     </div>
   </div>
-  <p class="section-sub" style="margin-bottom:0">Проект масштабируется от одной школы до уровня всей страны. QadamPlus может стать национальной платформой здоровых привычек.</p>
 </div>
 
-<div class="section" id="budget">
-  <div class="section-label">Бюджет</div>
-  <div class="section-title">Финансовый план</div>
-  <div class="section-sub">Примерная стоимость реализации MVP.</div>
-  <div class="budget-wrap">
-    <table class="budget-table">
-      <tr><td>Разработка прототипа</td><td>500 000 тг</td></tr>
-      <tr><td>Дизайн интерфейса</td><td>200 000 тг</td></tr>
-      <tr><td>Субсидии от государства</td><td>500 000 тг</td></tr>
-      <tr><td>Сервер и поддержка</td><td>150 000 тг</td></tr>
-      <tr><td>Реклама и продвижение</td><td>150 000 тг</td></tr>
-      <tr><td>Итого</td><td>~1 500 000 тг</td></tr>
-    </table>
+<div class="section" id="investors">
+  <div class="tag">Для инвесторов</div>
+  <h2>Почему это выгодно</h2>
+  <p class="lead">Цифры и факты, которые говорят сами за себя.</p>
+  <div class="investor-grid">
+    <div class="inv-card">
+      <div class="inv-num">40 000 ₸</div>
+      <div class="inv-label">экономия активного пользователя в месяц на здоровье и красоте</div>
+    </div>
+    <div class="inv-card">
+      <div class="inv-num">300+</div>
+      <div class="inv-label">партнёрских точек по всему Казахстану</div>
+    </div>
+    <div class="inv-card">
+      <div class="inv-num">30%</div>
+      <div class="inv-label">скидка на лабораторную диагностику у ведущих партнёров</div>
+    </div>
+    <div class="inv-card">
+      <div class="inv-num">50%</div>
+      <div class="inv-label">скидка в аптечном маркетплейсе на витамины и БАДы</div>
+    </div>
   </div>
 </div>
 
@@ -272,8 +338,9 @@
 </div>
 
 <footer>
-  <div class="footer-logo">QadamPlus</div>
-  <p>Шаг к здоровому будущему · Социальный проект 2025</p>
+  <div class="footer-logo">Qadam<span>Plus</span></div>
+  <p class="footer-tagline">Оздоровить нацию через культуру «маленьких шагов»</p>
+  <p>Социальный проект · Казахстан 2025</p>
 </footer>
 
 </body>
